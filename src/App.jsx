@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import { CardGroup, Filters, Header, Search } from "./containers";
 
 const App = () => {
+  const [results, setResults] = useState();
   const [pageNumber, setPageNumber] = useState(1);
-  const [fetchedData, setFetchedData] = useState();
   const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
 
-  const getData = async () => {
-    const data = await fetch(api).then((item) => item.json());
-    setFetchedData(data.results);
-  };
-
   useEffect(() => {
-    getData();
+    (async function () {
+      const data = await fetch(api).then((res) => res.json());
+      setResults(data.results);
+    })();
   }, [api]);
 
   return (
@@ -21,7 +19,7 @@ const App = () => {
       <Search />
       <div className="grid grid-cols-10">
         <Filters />
-        <CardGroup />
+        <CardGroup data={results} />
       </div>
     </div>
   );
