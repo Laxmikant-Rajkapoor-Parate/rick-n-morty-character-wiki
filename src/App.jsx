@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { CardGroup, Filters, Header, Search } from "./containers";
+import { CardGroup, Filters, Header, Pagination, Search } from "./containers";
 
 const App = () => {
   const [results, setResults] = useState();
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("");
+  const [species, setSpecies] = useState("");
+  const [gender, setGender] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-  const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+  const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&species=${species}&gender=${gender}`;
 
   useEffect(() => {
     (async function () {
@@ -14,13 +18,18 @@ const App = () => {
   }, [api]);
 
   return (
-    <div className="font-primary">
+    <div className="font-primary gradient-bg-welcome tracking-wide">
       <Header />
-      <Search />
+      <Search setSearch={setSearch} setPageNumber={setPageNumber} />
       <div className="grid grid-cols-10">
-        <Filters />
+        <Filters
+          setGender={setGender}
+          setSpecies={setSpecies}
+          setStatus={setStatus}
+        />
         <CardGroup data={results} />
       </div>
+      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
     </div>
   );
 };
