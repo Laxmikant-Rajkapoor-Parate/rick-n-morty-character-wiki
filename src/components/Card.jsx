@@ -14,7 +14,7 @@ const Card = ({ data }) => {
       <div className="h-64 overflow-hidden">
         <img
           src={data.image}
-          className="w-full object-cover  group-hover:scale-110 duration-300 transition-all"
+          className="w-full object-cover scale-110 group-hover:scale-100 duration-300 transition-all"
         />
       </div>
       <p className="font-semibold text-lg pl-4 py-4 text-slate-50">

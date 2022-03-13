@@ -13,7 +13,7 @@ const CardGroup = ({ data }) => {
   }
 
   return (
-    <div className="col-span-7 col-start-4 flex flex-wrap justify-center">
+    <div className="col-span-7 col-start-4 flex flex-wrap justify-center text-slate-200">
       {display}
     </div>
   );

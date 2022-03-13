@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CardGroup, Filters, Header, Pagination, Search } from "./containers";
 
 const App = () => {
+  const [info, setInfo] = useState();
   const [results, setResults] = useState();
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
@@ -14,6 +15,7 @@ const App = () => {
     (async function () {
       const data = await fetch(api).then((res) => res.json());
       setResults(data.results);
+      setInfo(data.info);
     })();
   }, [api]);
 
@@ -29,7 +31,11 @@ const App = () => {
         />
         <CardGroup data={results} />
       </div>
-      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+      <Pagination
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        data={info}
+      />
     </div>
   );
 };
