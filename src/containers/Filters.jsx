@@ -3,7 +3,19 @@ import { FilterItem } from "../components";
 
 const status = ["Alive", "Dead", "unknown"];
 const gender = ["Male", "Female", "Genderless", "unknown"];
-const species = ["Human", "Humanoid"];
+const species = [
+  "Human",
+  "Humanoid",
+  "Alien",
+  "Poopybutthole",
+  "Mythological",
+  "Unknown",
+  "Animal",
+  "Disease",
+  "Planet",
+  "Robot",
+  "Cronenberg",
+];
 
 const Filters = ({ setStatus, setSpecies, setGender }) => {
   return (
